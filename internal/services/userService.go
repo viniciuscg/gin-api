@@ -1,5 +1,10 @@
 package services
 
+import (
+	"github.com/viniciuscg/gin-api/internal/model"
+	"github.com/viniciuscg/gin-api/internal/repository"
+)
+
 type UserService struct {
 	Repo *repository.UserRepository
 }
@@ -10,8 +15,8 @@ func NewUserService(repo *repository.UserRepository) *UserService {
 	}
 }
 
-func (s *UserService) GetUsers() ([]*model.User, error) {
-	users, err := s.Repo.GetAllUsers()
+func (s *UserService) GetUsers() ([]model.User, error) {
+	users, err := s.Repo.GetUsers()
 	if err != nil {
 		return nil, err
 	}
